@@ -15,14 +15,6 @@ export default StyleSheet.create ({
         marginTop: 50,
         marginBottom: 30,
     },
-    result: {
-        textAlign: 'center',
-        fontSize: 24,
-        color: 'green',
-        fontWeight: 'bold',
-        marginTop: 30,
-        marginBottom: 30
-    },
     title: {
         fontWeight: 'bold',
         marginTop: 10,
@@ -43,5 +35,29 @@ export default StyleSheet.create ({
         fontSize: 15,
         fontWeight: 'bold',
       },
+      res0: {
+        textAlign: 'center',
+        fontSize: 24,
+        color: 'green',
+        fontWeight: 'bold',
+        marginTop: 30,
+        marginBottom: 30
+      },
+      res1: {
+        textAlign: 'center',
+        fontSize: 24,
+        color: 'yellow',
+        fontWeight: 'bold',
+        marginTop: 30,
+        marginBottom: 30
+      },
+      res2: {
+        textAlign: 'center',
+        fontSize: 24,
+        color: 'red',
+        fontWeight: 'bold',
+        marginTop: 30,
+        marginBottom: 30
+      }
 
 })

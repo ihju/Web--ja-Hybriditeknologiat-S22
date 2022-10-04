@@ -11,7 +11,7 @@ export default function App() {
   const [time, setTime] = useState(0)
   const [gender, setGender] = useState('male')
   const [alc, setAlc] = useState(0)
-  const [col, setCol] = useState('green')
+  const [col, setCol] = useState(StyleSheet.res0)
 
   const bottleCount = [
     {label: '1', value: '1.0'},
@@ -75,19 +75,22 @@ export default function App() {
       }
       if(result < 0){
         setAlc(0)
-      }else{setAlc(result)
-        if(alc <= 0.15){
-          setCol('yellow')
+        setCol(StyleSheet.res0)
+      }
+      if(result > 0.05 && alc < 0.15){
+          setAlc(result)
+          setCol(StyleSheet.res1)
         }
-        if(alc > 0.15){
-          setCol('red')
-        }}
+      if(result >= 0.15){
+          setAlc(result)
+          setCol(StyleSheet.res2)
+        }
       
 
     } else{alert("Please insert your weight")}
     
   }
-
+console.log(alc)
 
   return (
     <ScrollView style={StyleSheet.scrollView}>
@@ -121,7 +124,7 @@ export default function App() {
       initial={0}
       onPress={(value) => setGender(value)}
       />
-      <Text style={StyleSheet.result}>{alc.toFixed(2)}</Text>
+      <Text style={col}>{alc.toFixed(2)}</Text>
       <Button title="Calculate" onPress={calculate}/>
     </ScrollView>
   );
