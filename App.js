@@ -92,7 +92,7 @@ export default function App() {
   return (
     <ScrollView style={StyleSheet.scrollView}>
       <Text style={StyleSheet.header}> Alcometer</Text>
-      <Text style={StyleSheet.title} padding={1000}>Weight (kg)</Text>
+      <Text style={StyleSheet.title}>Weight (kg)</Text>
       <TextInput placeholder="Add weight..."  value={weight} onChangeText={text => setWeight(text)} keyboardType = "number-pad" style={StyleSheet.input} />
       <Text style={StyleSheet.title}>Bottles</Text>
       <View style={StyleSheet.pickerBorder}>
