@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { Text, View, TextInput, Button, ScrollView } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import RadioForm from 'react-native-simple-radio-button'
 import {useState} from 'react';
+import StyleSheet from './Styles';
 
 export default function App() {
   const [weight, setWeight] = useState(0)
@@ -10,6 +11,7 @@ export default function App() {
   const [time, setTime] = useState(0)
   const [gender, setGender] = useState('male')
   const [alc, setAlc] = useState(0)
+  const [col, setCol] = useState('green')
 
   const bottleCount = [
     {label: '1', value: '1.0'},
@@ -46,6 +48,10 @@ export default function App() {
     {label: '11', value: '11.0'},
     {label: '12', value: '12.0'},
     {label: '13', value: '13.0'},
+    {label: '14', value: '14.0'},
+    {label: '15', value: '15.0'},
+    {label: '16', value: '16.0'},
+    {label: '17', value: '17.0'},
 
   ]
 
@@ -69,27 +75,37 @@ export default function App() {
       }
       if(result < 0){
         setAlc(0)
-      }else{setAlc(result)}
+      }else{setAlc(result)
+        if(alc <= 0.15){
+          setCol('yellow')
+        }
+        if(alc > 0.15){
+          setCol('red')
+        }}
+      
+
     } else{alert("Please insert your weight")}
     
   }
 
 
   return (
-    <View style={styles.container}>
-      <Text> Alcometer</Text>
-      <Text>Weight</Text>
-      <TextInput placeholder="Add weight..."  value={weight} onChangeText={text => setWeight(text)}  />
-      <Text>Bottles</Text>
+    <ScrollView style={StyleSheet.scrollView}>
+      <Text style={StyleSheet.header}> Alcometer</Text>
+      <Text style={StyleSheet.title} padding={1000}>Weight (kg)</Text>
+      <TextInput placeholder="Add weight..."  value={weight} onChangeText={text => setWeight(text)} keyboardType = "number-pad" style={StyleSheet.input} />
+      <Text style={StyleSheet.title}>Bottles</Text>
+      <View style={StyleSheet.pickerBorder}>
       <Picker onValueChange={(itemValue) => setBottles(itemValue)} selectedValue={bottles}>
         {
           bottleCount.map((bottles,index) => (
             <Picker.Item key={index} label={bottles.label} value={bottles.value} />
           ))
         }
-
       </Picker>
-      <Text>Time</Text>
+      </View>
+      <Text style={StyleSheet.title}>Time (h)</Text>
+      <View style={StyleSheet.pickerBorder}>
       <Picker onValueChange={(itemValue) => setTime(itemValue)} selectedValue={time}>
       {
           times.map((time,index) => (
@@ -97,24 +113,17 @@ export default function App() {
           ))
         }
       </Picker>
-      <Text>Gender</Text>
+      </View>
+      <Text style={StyleSheet.title}>Gender</Text>
       <RadioForm
       buttonSize={10}
       radio_props={genders}
       initial={0}
       onPress={(value) => setGender(value)}
       />
-      <Text>{alc.toFixed(2)}</Text>
+      <Text style={StyleSheet.result}>{alc.toFixed(2)}</Text>
       <Button title="Calculate" onPress={calculate}/>
-    </View>
+    </ScrollView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 30,
-    marginLeft: 10,
-    marginRight: 10,
-  },
-});
