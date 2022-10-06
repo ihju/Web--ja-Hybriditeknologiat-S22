@@ -18,7 +18,8 @@ export default StyleSheet.create ({
     title: {
         fontWeight: 'bold',
         marginTop: 10,
-        marginBottom: 10
+        marginBottom: 10,
+        fontSize: 20,
     },
     pickerBorder: {
         borderRadius: 12, 
@@ -58,6 +59,42 @@ export default StyleSheet.create ({
         fontWeight: 'bold',
         marginTop: 30,
         marginBottom: 30
-      }
+      },
+      buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+        width: '100%',
+        marginTop: 10,
+        paddingLeft: 30,
+        paddingRight: 30,
+        marginBottom: 30,
+        borderBottomWidth: 1,
+        
+
+    },
+    label: {
+        fontWeight: 'bold',
+        marginTop: 10,
+        marginBottom: 10,
+        marginRight: 10,
+        fontSize: 16,
+    },
+    circle: {
+        height: 28,
+        width: 28,
+        borderRadius: 15,
+        borderWidth: 2,
+        borderColor: '#000',
+        alignItems: 'center',
+        justifyContent: 'center',
+
+    },
+    checkedCircle: {
+        width: 15,
+        height: 15,
+        borderRadius: 7,
+        backgroundColor: '#000'
+    },
 
 })

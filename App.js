@@ -1,9 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
+
 import { Text, View, TextInput, Button, ScrollView } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
-import RadioForm from 'react-native-simple-radio-button'
 import {useState} from 'react';
-import StyleSheet from './Styles';
+import StyleSheet from './Styles/Styles';
+import Radiobutton from './components/Radiobutton.js';
 
 export default function App() {
   const [weight, setWeight] = useState(0)
@@ -12,7 +12,7 @@ export default function App() {
   const [gender, setGender] = useState('male')
   const [alc, setAlc] = useState(0)
   const [col, setCol] = useState(StyleSheet.res0)
-
+  
   const bottleCount = [
     {label: '1', value: '1.0'},
     {label: '2', value: '2.0'},
@@ -118,12 +118,7 @@ console.log(alc)
       </Picker>
       </View>
       <Text style={StyleSheet.title}>Gender</Text>
-      <RadioForm
-      buttonSize={10}
-      radio_props={genders}
-      initial={0}
-      onPress={(value) => setGender(value)}
-      />
+      <Radiobutton gender={genders} onPress={(value) => {setGender(value)}} />
       <Text style={col}>{alc.toFixed(2)}</Text>
       <Button title="Calculate" onPress={calculate}/>
     </ScrollView>
